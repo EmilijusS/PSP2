@@ -55,33 +55,21 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainServices\DomainServices.csproj">
-      <Project>{2802f9c8-4f7c-49cf-a017-6f56544d4ed1}</Project>
-      <Name>DomainServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{7c0efba2-5a0f-4291-a241-0d01d4bc9e50}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FacadeServices\FacadeServices.csproj">
-      <Project>{150b4217-219b-4174-a427-d028105d7c6b}</Project>
-      <Name>FacadeServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Integration\Integration.csproj">
-      <Project>{892c8dd0-e0b6-4856-acd9-328dd6f7eab8}</Project>
-      <Name>Integration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PSP2\UI.csproj">
-      <Project>{86630a23-0157-4572-8a67-0b97e9c75502}</Project>
-      <Name>UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repositories\Repositories.csproj">
-      <Project>{f7ae84a6-ca60-46a2-8415-afc546f770a1}</Project>
-      <Name>Repositories</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{df37e67d-c16d-41e7-80a1-356576a9e989}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Main\Main.csproj">
+      <Project>{0b79a319-93ff-4ebe-9819-c9ad11afbc9e}</Project>
+      <Name>Main</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mock\Mock.csproj">
+      <Project>{89b1cf0d-b3cb-4341-a1b9-5bdcafbbaf28}</Project>
+      <Name>Mock</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

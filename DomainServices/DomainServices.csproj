@@ -40,22 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\ClientCheapFactory.cs" />
-    <Compile Include="Factories\ClientPremiumFactory.cs" />
-    <Compile Include="GetBestTrainerForClient.cs" />
-    <Compile Include="GetLeastBusyTrainerForClient.cs" />
-    <Compile Include="Factories\IClientFactory.cs" />
-    <Compile Include="IGetTrainerForClient.cs" />
-    <Compile Include="Factories\ITrainerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Factories\TrainerProfessionalFactory.cs" />
-    <Compile Include="Factories\TrainerSimpleFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{7c0efba2-5a0f-4291-a241-0d01d4bc9e50}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

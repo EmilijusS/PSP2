@@ -76,8 +76,8 @@ namespace Container
         {
             builder.RegisterType<Database>().As<IDatabase>();
             builder.RegisterType<Logger>().As<ILogger>();
-            builder.RegisterType<ClientCheapFactory>().As<IClientFactory>();
-            builder.RegisterType<TrainerSimpleFactory>().As<ITrainerFactory>();
+            builder.RegisterType<ClientFactory>().As<IClientFactory>();
+            builder.RegisterType<TrainerFactory>().As<ITrainerFactory>();
             builder.RegisterType<GetLeastBusyTrainerForClient>().As<IGetTrainerForClient>();
             builder.RegisterType<PersonScenarioStable>().As<IPersonScenario>();
             builder.RegisterType<MainViews>().As<IMainViews>();
@@ -90,8 +90,8 @@ namespace Container
         {
             builder.RegisterType<Database>().As<IDatabase>();
             builder.RegisterType<Logger>().As<ILogger>();
-            builder.RegisterType<ClientPremiumFactory>().As<IClientFactory>();
-            builder.RegisterType<TrainerProfessionalFactory>().As<ITrainerFactory>();
+            builder.RegisterType<ClientMockFactory>().As<IClientFactory>();
+            builder.RegisterType<TrainerMockFactory>().As<ITrainerFactory>();
             builder.RegisterType<GetBestTrainerForClient>().As<IGetTrainerForClient>();
             builder.RegisterType<PersonScenarioExperimental>().As<IPersonScenario>();
             builder.RegisterType<MainViews>().As<IMainViews>();

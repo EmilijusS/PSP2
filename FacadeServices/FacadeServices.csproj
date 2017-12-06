@@ -40,22 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDatabase.cs" />
-    <Compile Include="ILogger.cs" />
-    <Compile Include="IPersonScenario.cs" />
-    <Compile Include="PersonScenarioExperimental.cs" />
-    <Compile Include="PersonScenarioStable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DomainServices\DomainServices.csproj">
-      <Project>{2802f9c8-4f7c-49cf-a017-6f56544d4ed1}</Project>
-      <Name>DomainServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{7c0efba2-5a0f-4291-a241-0d01d4bc9e50}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
