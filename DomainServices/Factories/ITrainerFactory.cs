@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain;
 
-namespace PSP2
+namespace DomainServices
 {
-    class Program
+    public interface ITrainerFactory
     {
-        static void Main(string[] args)
-        {
-        }
+        Trainer GetTrainer(int id);
     }
 }
