@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using DomainServices;
+using Autofac.Features.AttributeFilters;
 
 namespace FacadeServices
 {
@@ -21,7 +22,7 @@ namespace FacadeServices
             ITrainerFactory trainerFactory,
             IGetTrainerForClient getTrainerForClient,
             IDatabase database,
-            ILogger logger)
+            [KeyFilter("FacadeLogger")] ILogger logger)
         {
             this.clientFactory = clientFactory;
             this.trainerFactory = trainerFactory;

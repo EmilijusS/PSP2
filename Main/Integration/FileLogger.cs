@@ -7,11 +7,11 @@ using FacadeServices;
 
 namespace Integration
 {
-    public class Logger : ILogger
+    public class FileLogger : ILogger
     {
         private List<string> log;
 
-        public Logger()
+        public FileLogger()
         {
             log = new List<string>();
         }
@@ -19,6 +19,7 @@ namespace Integration
         public void Log(string message)
         {
             log.Add(message);
+            Console.WriteLine("FileLogger:" + message);
         }
     }
 }

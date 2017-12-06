@@ -10,14 +10,9 @@ using Integration;
 using Repositories;
 using UI;
 using Autofac;
+using Autofac.Features.AttributeFilters;
 
-// Todo: 1. Visi servisai kelios realizacijos.
-// Todo: 2. X variantas esybių (realClient ir fakeClient).
-// Todo: 3. Abstrakcinių dalykų atskyrimas (pvz.: mock į atskirą, default kartu).
-// Todo: 4. Pridėti domeninius servisus.
-// Todo: 5. Clean Architecture & DIP.
 // Todo: 6. Autofac sutvarkyti.
-// Todo: 7. UML factory return type pakoreguoti.
 
 namespace Container
 {
@@ -74,30 +69,32 @@ namespace Container
 
         void configuration1(ContainerBuilder builder)
         {
-            builder.RegisterType<Database>().As<IDatabase>();
-            builder.RegisterType<Logger>().As<ILogger>();
+            builder.RegisterType<SQLDatabase>().As<IDatabase>();
+            builder.RegisterType<FileLogger>().Keyed<ILogger>("FacadeLogger");
+            builder.RegisterType<HttpLogger>().Keyed<ILogger>("ControllerLogger");
             builder.RegisterType<ClientFactory>().As<IClientFactory>();
             builder.RegisterType<TrainerFactory>().As<ITrainerFactory>();
             builder.RegisterType<GetLeastBusyTrainerForClient>().As<IGetTrainerForClient>();
-            builder.RegisterType<PersonScenarioStable>().As<IPersonScenario>();
+            builder.RegisterType<PersonScenarioStable>().As<IPersonScenario>().WithAttributeFiltering();
             builder.RegisterType<MainViews>().As<IMainViews>();
             builder.RegisterType<PersonViews>().As<IPersonViews>();
-            builder.RegisterType<MainController>().AsSelf();
-            builder.RegisterType<PersonController>().AsSelf();
+            builder.RegisterType<MainController>().AsSelf().WithAttributeFiltering();
+            builder.RegisterType<PersonController>().AsSelf().WithAttributeFiltering();
         }
 
         void configuration2(ContainerBuilder builder)
         {
-            builder.RegisterType<Database>().As<IDatabase>();
-            builder.RegisterType<Logger>().As<ILogger>();
+            builder.RegisterType<SQLDatabase>().As<IDatabase>();
+            builder.RegisterType<FileLogger>().Keyed<ILogger>("FacadeLogger");
+            builder.RegisterType<HttpLogger>().Keyed<ILogger>("ControllerLogger");
             builder.RegisterType<ClientMockFactory>().As<IClientFactory>();
             builder.RegisterType<TrainerMockFactory>().As<ITrainerFactory>();
             builder.RegisterType<GetBestTrainerForClient>().As<IGetTrainerForClient>();
-            builder.RegisterType<PersonScenarioExperimental>().As<IPersonScenario>();
+            builder.RegisterType<PersonScenarioExperimental>().As<IPersonScenario>().WithAttributeFiltering();
             builder.RegisterType<MainViews>().As<IMainViews>();
             builder.RegisterType<PersonViews>().As<IPersonViews>();
-            builder.RegisterType<MainController>().AsSelf();
-            builder.RegisterType<PersonController>().AsSelf();
+            builder.RegisterType<MainController>().AsSelf().WithAttributeFiltering();
+            builder.RegisterType<PersonController>().AsSelf().WithAttributeFiltering();
         }
     }
 }

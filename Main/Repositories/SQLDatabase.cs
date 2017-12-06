@@ -8,12 +8,12 @@ using Domain;
 
 namespace Repositories
 {
-    public class Database : IDatabase
+    public class SQLDatabase : IDatabase
     {
         private List<IClient> clients;
         private List<ITrainer> trainers;
 
-        public Database()
+        public SQLDatabase()
         {
             clients = new List<IClient>();
             trainers = new List<ITrainer>();
