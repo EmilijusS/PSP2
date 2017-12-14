@@ -30,7 +30,7 @@ namespace FacadeServices
             this.database = database;
             this.logger = logger;
         }
-
+        
         public void CreateClient(int id)
         {
             database.WriteClient(clientFactory.GetClient(id));
