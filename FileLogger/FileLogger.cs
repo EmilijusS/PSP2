@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FacadeServices;
 
-namespace Integration
+namespace PSP2
 {
-    public class HttpLogger : ILogger
+    public class FileLogger : ILogger
     {
         private List<string> log;
 
-        public HttpLogger()
+        public FileLogger()
         {
             log = new List<string>();
         }
@@ -19,7 +18,7 @@ namespace Integration
         public void Log(string message)
         {
             log.Add(message);
-            Console.WriteLine("HttpLogger: " + message);
+            Console.WriteLine("FileLogger:" + message);
         }
     }
 }

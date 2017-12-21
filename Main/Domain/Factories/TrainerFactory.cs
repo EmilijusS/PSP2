@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
 
-namespace DomainServices
+namespace PSP2
 {
-    public class TrainerMockFactory : ITrainerFactory
+    public class TrainerFactory : ITrainerFactory
     {
         public ITrainer GetTrainer(int id)
         {
-            return new TrainerMock(id);
+            return new Trainer(id);
         }
     }
 }

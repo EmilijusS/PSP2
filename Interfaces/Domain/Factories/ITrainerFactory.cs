@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FacadeServices
+namespace PSP2
 {
-    public interface ILogger
+    public interface ITrainerFactory
     {
-        void Log(string message);
+        ITrainer GetTrainer(int id);
     }
 }

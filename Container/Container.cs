@@ -3,18 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
-using DomainServices;
-using FacadeServices;
-using Integration;
-using Repositories;
-using UI;
 using Autofac;
+using Autofac.Core;
 using Autofac.Features.AttributeFilters;
 
-// Todo: 6. Autofac sutvarkyti.
-
-namespace Container
+namespace PSP2
 {
     public class Container
     {
@@ -69,7 +62,8 @@ namespace Container
 
         void configuration1(ContainerBuilder builder)
         {
-            builder.RegisterType<SQLDatabase>().As<IDatabase>();
+            builder.RegisterType<SQLDatabase>().As<ITrainerRepository>();
+            builder.RegisterType<SQLDatabase>().As<IClientRepository>();
             builder.RegisterType<FileLogger>().Keyed<ILogger>("FacadeLogger");
             builder.RegisterType<HttpLogger>().Keyed<ILogger>("ControllerLogger");
             builder.RegisterType<ClientFactory>().As<IClientFactory>();
@@ -84,7 +78,11 @@ namespace Container
 
         void configuration2(ContainerBuilder builder)
         {
-            builder.RegisterType<SQLDatabase>().As<IDatabase>();
+            builder.RegisterType<FileLogger>().Keyed<ILogger>("SQLDatabaseLogger");
+            builder.RegisterType<HttpLogger>().Keyed<ILogger>("NoSQLDatabaseLogger");
+            builder.RegisterType<SQLDatabase>().As<ITrainerRepository>().WithParameter(ResolvedParameter.ForKeyed<ILogger>("SQLDatabaseLogger"));
+            builder.RegisterType<NoSQLDatabase>().As<IClientRepository>().WithParameter(ResolvedParameter.ForKeyed<ILogger>("NoSQLDatabaseLogger"));
+
             builder.RegisterType<FileLogger>().Keyed<ILogger>("FacadeLogger");
             builder.RegisterType<HttpLogger>().Keyed<ILogger>("ControllerLogger");
             builder.RegisterType<ClientMockFactory>().As<IClientFactory>();

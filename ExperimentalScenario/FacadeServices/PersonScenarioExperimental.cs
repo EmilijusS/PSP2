@@ -3,38 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain;
-using DomainServices;
 using Autofac.Features.AttributeFilters;
 
-namespace FacadeServices
+namespace PSP2
 {
     public class PersonScenarioExperimental : IPersonScenario
     {
         IClientFactory clientFactory;
         ITrainerFactory trainerFactory;
         IGetTrainerForClient getTrainerForClient;
-        IDatabase database;
+        IClientRepository clientRepo;
+        ITrainerRepository trainerRepo;
         ILogger logger;
 
-        public PersonScenarioExperimental (
+        public PersonScenarioExperimental(
             IClientFactory clientFactory,
             ITrainerFactory trainerFactory,
             IGetTrainerForClient getTrainerForClient,
-            IDatabase database,
+            IClientRepository clientRepo,
+            ITrainerRepository trainerRepo,
             [KeyFilter("FacadeLogger")] ILogger logger)
         {
             this.clientFactory = clientFactory;
             this.trainerFactory = trainerFactory;
             this.getTrainerForClient = getTrainerForClient;
-            this.database = database;
+            this.clientRepo = clientRepo;
+            this.trainerRepo = trainerRepo;
             this.logger = logger;
         }
 
         public void CreateClient(int id)
         {
             id *= 10;
-            database.WriteClient(clientFactory.GetClient(id));
+            clientRepo.WriteClient(clientFactory.GetClient(id));
             logger.Log("Succesfully created new client.");
 
         }
@@ -42,7 +43,7 @@ namespace FacadeServices
         public void CreateTrainer(int id)
         {
             id *= 10;
-            database.WriteTrainer(trainerFactory.GetTrainer(id));
+            trainerRepo.WriteTrainer(trainerFactory.GetTrainer(id));
             logger.Log("Succesfully created new trainer.");
         }
 
@@ -50,8 +51,8 @@ namespace FacadeServices
         {
             clientId *= 10;
 
-            IClient client = database.GetClient(clientId);
-            ITrainer trainer = getTrainerForClient.GetTrainer(client, database.GetAllTrainers());
+            IClient client = clientRepo.GetClient(clientId);
+            ITrainer trainer = getTrainerForClient.GetTrainer(client, trainerRepo.GetAllTrainers());
 
             if (trainer == null)
                 logger.Log($"Failed to find trainer for client {clientId}");

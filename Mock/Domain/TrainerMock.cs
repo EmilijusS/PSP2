@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace PSP2
 {
     public class TrainerMock : ITrainer
     {

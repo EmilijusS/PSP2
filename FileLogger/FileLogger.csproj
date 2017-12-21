@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C85F173-7D87-4DA4-991A-780A7A2F6F62}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{79233226-B6F9-4887-84CA-F835580B2978}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Container</RootNamespace>
-    <AssemblyName>Container</AssemblyName>
+    <RootNamespace>FileLogger</RootNamespace>
+    <AssemblyName>FileLogger</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,20 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,45 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Container.cs" />
+    <Compile Include="FileLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExperimentalScenario\Experimental.csproj">
-      <Project>{d3156a66-a502-4595-a1e4-ccb833e1ed1c}</Project>
-      <Name>Experimental</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileLogger\FileLogger.csproj">
-      <Project>{79233226-b6f9-4887-84ca-f835580b2978}</Project>
-      <Name>FileLogger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HttpLogger\HttpLogger.csproj">
-      <Project>{066931e1-8da4-493b-81b2-39f0834f2f0f}</Project>
-      <Name>HttpLogger</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interfaces\Abstractions.csproj">
-      <Project>{df37e67d-c16d-41e7-80a1-356576a9e989}</Project>
+      <Project>{DF37E67D-C16D-41E7-80A1-356576A9E989}</Project>
       <Name>Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Main\Main.csproj">
-      <Project>{0b79a319-93ff-4ebe-9819-c9ad11afbc9e}</Project>
-      <Name>Main</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Mock\Mock.csproj">
-      <Project>{89b1cf0d-b3cb-4341-a1b9-5bdcafbbaf28}</Project>
-      <Name>Mock</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NoSQLDatabase\NoSQLDatabase.csproj">
-      <Project>{cb27021d-f617-412c-aabe-be879adc8275}</Project>
-      <Name>NoSQLDatabase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SQLDatabase\SQLDatabase.csproj">
-      <Project>{f2deeb97-c81c-4437-bc21-f6477a0b2567}</Project>
-      <Name>SQLDatabase</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
